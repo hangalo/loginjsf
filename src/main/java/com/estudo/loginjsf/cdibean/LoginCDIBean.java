@@ -27,8 +27,8 @@ public class LoginCDIBean implements Serializable {
     private Usuario usuarioLogado;
     private String username, senha;
 
-    @Inject
-    UsuarioDAO usuarioDAO;
+
+    UsuarioDAO usuarioDAO = new UsuarioDAO();
 
     public LoginCDIBean() {
 
@@ -81,8 +81,12 @@ public class LoginCDIBean implements Serializable {
             HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
             if (session != null) {
                 session.setAttribute("usuarioLogado", usuarioLogado);
+                return "/index?faces-redirect=true";
             }
-            return "/index?faces-redirect=true";
+            else{
+            return "/login?faces-redirect=true";
+            }
+            
         }
     }
 

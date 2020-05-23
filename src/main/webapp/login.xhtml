@@ -1,12 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Exemplo de login com JSF</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+       
+            <h:form id="formLogin">
+                <h:panelGrid columns="2" >
+                    Digite o seu user name e senha para acesso ao sistema
+                    <p:messages id="messagesLogin"/>
+                    <h:inputText  value="#{loginCDIBean.username}" size="40" required="true" requiredMessage="O campo user name é obrigatorio"/>
+                    <h:inputSecret  value="#{loginCDIBean.senha}" size="40" required="true" requiredMessage="O campo senha é obrigatorio"/>
+                    <h:commandButton value="Log in" action="#{loginCDIBean.login()}"/>
+                </h:panelGrid>
+            </h:form>
+       
     </h:body>
 </html>
 

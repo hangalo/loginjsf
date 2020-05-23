@@ -17,7 +17,6 @@ import java.sql.SQLException;
  * @author informatica
  */
 public class UsuarioDAO {
- 
 
     String FINDUSER = "SELECT user_id, user_name, password, nome  FROM user u  WHERE user_name =? AND password = ?";
 
@@ -49,22 +48,22 @@ public class UsuarioDAO {
     }
 
     private void fillData(Usuario user, ResultSet rs) {
-        if (rs!=null) {
-           
+        if (rs != null) {
+
             try {
-                user.setId(rs.getLong("id_user"));
+                user.setId(rs.getLong("user_id"));
                 user.setLogin(rs.getString("user_name"));
                 user.setSenha(rs.getString("password"));
-                 user.setNome(rs.getString("nome"));
-                      
-             
+                user.setNome(rs.getString("nome"));
 
             } catch (SQLException ex) {
                 System.err.println("Error:UserDAO:fillData: " + ex.getLocalizedMessage());
             }
+
+        } else {
+            System.err.println("FillData: Resulset: Vuoto");
         }
-        System.err.println("FillData: Resulset: Vuoto");
+
     }
-    
-    
+
 }

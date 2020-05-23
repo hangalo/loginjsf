@@ -29,9 +29,9 @@ public class LoginPhaseListener implements PhaseListener {
         NavigationHandler navigationHandler = facesContext.getApplication().getNavigationHandler();
         boolean paginaLogin = viewId.lastIndexOf("login") > -1;
         if (existeUsuarioLogado() && paginaLogin) {
-            navigationHandler.handleNavigation(facesContext, null, "/index?faces-redirect=true");
+            navigationHandler.handleNavigation(facesContext, null, "index?faces-redirect=true");
         } else if (!existeUsuarioLogado() && !paginaLogin) {
-            navigationHandler.handleNavigation(facesContext, null, "/login?faces-redirect=true");
+            navigationHandler.handleNavigation(facesContext, null, "login?faces-redirect=true");
         }
     }
 
